@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta etiquetas necesarias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Editar Usuario</title>
+    <style>
+      .navbar {
+        background-color: #4781d8;
+      }
+      .navbar a {
+        color: white !important;
+      }
+      .footer {
+        background-color: #4781d8;
+        padding: 20px 0;
+      }
+      .footer p, .footer a {
+        color: white !important;
+      }
+      .footer .social-icons {
+        margin: 20px 0;
+      }
+      .footer .social-icons a {
+        color: white !important;
+        margin: 0 15px;
+        font-size: 24px;
+      }
+      .footer .social-icons a:hover {
+        text-decoration: none;
+        color: #a57a39;
+      }
+      .form-container {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">Sur Extremo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('suggestions') }}">Sugerencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('catalog') }}">Catálogo</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <div class="form-container">
+        <h1>Editar Usuario</h1>
+        <form action="{{ url_for('get_user', id=user['id']) }}" method="POST">
+          <div class="form-group">
+            <label for="rut">RUT (xx.xxx.xxx-x)</label>
+            <input type="text" class="form-control" id="rut" name="rut" value="{{ user['rut'] }}" required>
+          </div>
+          <div class="form-group">
+            <label for="nombre_completo">Nombre Completo</label>
+            <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" value="{{ user['nombre_completo'] }}" required>
+          </div>
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" value="{{ user['direccion'] }}" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono (9 dígitos)</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ user['telefono'] }}" required>
+          </div>
+          <div class="form-group">
+            <label for="correo_electronico">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="{{ user['correo_electronico'] }}" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer mt-5">
+      <div class="container text-center">
+        <p>Síguenos en nuestras redes sociales:</p>
+        <!-- Iconos de redes sociales -->
+        <div class="social-icons">
+          <a href="#"><img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter"></a>
+          <a href="#"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"></a>
+        </div>
+        <p>&copy; 2024 Sur Extremo. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript opcional -->
+    <!-- jQuery primero, luego Popper.js, y luego Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

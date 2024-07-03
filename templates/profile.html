@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta etiquetas necesarias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Perfil del Usuario</title>
+    <style>
+      .navbar {
+        background-color: #4781d8;
+      }
+      .navbar a {
+        color: white !important;
+        border: 2px solid white;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 5px;
+      }
+      .navbar .nav-item .nav-link:hover {
+        background-color: #ff9800;
+        border-color: #ff9800;
+      }
+      .navbar .navbar-nav.ml-auto .nav-link {
+        color: white !important;
+      }
+      .footer {
+        background-color: #4781d8;
+      }
+      .footer p, .footer a {
+        color: white !important;
+      }
+      .footer .social-icons {
+        margin: 20px 0;
+      }
+      .footer .social-icons a {
+        color: white !important;
+        margin: 0 15px;
+        font-size: 24px;
+      }
+      .footer .social-icons a:hover {
+        text-decoration: none;
+        color: #a57a39;
+      }
+      .profile-info, .reservations, .suggestions {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static', filename='img/LOGOTURISMO.png') }}" alt="Logo" width="30" height="30">
+        Sur Extremo
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('suggestions') }}">Sugerencias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('catalog') }}">Catálogo</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Iniciar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h1>Perfil del Usuario</h1>
+      <div class="profile-info">
+        <h2>Información Personal</h2>
+        <p><strong>RUT:</strong> {{ user.rut }}</p>
+        <p><strong>Nombre Completo:</strong> {{ user.nombre_completo }}</p>
+        <p><strong>Dirección:</strong> {{ user.direccion }}</p>
+        <p><strong>Teléfono:</strong> {{ user.telefono }}</p>
+        <p><strong>Correo Electrónico:</strong> {{ user.correo_electronico }}</p>
+      </div>
+      <div class="reservations mt-4">
+        <h2>Reservas</h2>
+        {% if reservations %}
+          <ul class="list-group">
+            {% for reservation in reservations %}
+              <li class="list-group-item">{{ reservation.detalle }} - {{ reservation.fecha }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No tienes reservas aún.</p>
+        {% endif %}
+      </div>
+      <div class="suggestions mt-4">
+        <h2>Sugerencias y Quejas</h2>
+        {% if suggestions %}
+          <ul class="list-group">
+            {% for suggestion in suggestions %}
+              <li class="list-group-item">{{ suggestion.mensaje }} - {{ suggestion.fecha }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No has realizado sugerencias o quejas.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <footer class="footer mt-5">
+      <div class="container text-center">
+        <p>Síguenos en nuestras redes sociales:</p>
+        <div class="social-icons">
+          <a href="#"><img src="https://img.icons8.com/color/48/000000/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="https://img.icons8.com/color/48/000000/twitter.png" alt="Twitter"></a>
+          <a href="#"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"></a>
+        </div>
+        <p>&copy; 2024 Sur Extremo. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

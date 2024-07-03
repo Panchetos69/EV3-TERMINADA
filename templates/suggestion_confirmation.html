@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta etiquetas necesarias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Confirmación de Sugerencia</title>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sugerencia Enviada</h5>
+          <p class="card-text">Gracias por tu sugerencia. Aquí están los detalles:</p>
+          <ul>
+            <li><strong>Correo Electrónico:</strong> {{ correo_electronico }}</li>
+            <li><strong>Mensaje:</strong> {{ mensaje }}</li>
+          </ul>
+          <a href="{{ url_for('index') }}" class="btn btn-primary">Volver al Inicio</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
